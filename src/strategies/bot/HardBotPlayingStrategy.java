@@ -1,8 +1,11 @@
 package strategies.bot;
 
+import models.Board;
+import models.Move;
+
 public class HardBotPlayingStrategy implements BotPlayingStrategy {
     @Override
-    public void makeMove() {
-
+    public Move makeMove(Board board) {
+        return null;
     }
 }
