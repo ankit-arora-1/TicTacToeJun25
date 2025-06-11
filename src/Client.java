@@ -9,10 +9,12 @@ import strategies.winning.WinningStrategy;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Client {
     public static void main(String[] args) throws PlayerCountException, BotCountException {
         GameController gameController = new GameController();
+        Scanner scanner = new Scanner(System.in);
 
         int dimension = 3;
         List<Player> players = new ArrayList<>();
@@ -42,6 +44,12 @@ public class Client {
 
        while(gameController.checkGameStatus(game).equals(GameState.IN_PROGRESS)) {
            gameController.printBoard(game);
+           System.out.println("Do you want to undo? (y/n)");
+           String answer = scanner.next();
+           if(answer.equalsIgnoreCase("y")) {
+               gameController.undo(game);
+               continue;
+           }
            gameController.makeMove(game);
        }
 
